@@ -15,6 +15,7 @@ public class XRF_RaycastInteractions_CameraMouse : MonoBehaviour
     public GameObject feetIcon;
     public GameObject pointerPrefab;
 
+    private Vector3 endPointRotation;
 
     private GameObject hitObject;
     private bool Clickable;
@@ -73,6 +74,7 @@ public class XRF_RaycastInteractions_CameraMouse : MonoBehaviour
             //i shot out a ray and it hit something
             //Debug.Log("I hit something");
             hitObject = myRayHit.transform.gameObject;
+            endPointRotation = myRayHit.normal;
 
             pointerPrefab.SetActive(true);
             pointerPrefab.transform.position = myRayHit.point;
@@ -110,6 +112,8 @@ public class XRF_RaycastInteractions_CameraMouse : MonoBehaviour
                     Teleportable = true;
                     feetIcon.transform.position = endPoint;
                     feetIcon.SetActive(true);
+                    feetIcon.transform.rotation = Quaternion.FromToRotation(Vector3.up, myRayHit.normal);
+
                     grabable = false;
                 }
                 else if (hitObject.GetComponent<XRF_InteractionController>().isGrabbable)

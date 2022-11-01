@@ -21,6 +21,7 @@ public class XRF_RaycastInteractions_VRController : MonoBehaviour
     private Material[] matsHigh;
     private GameObject tempSelectedObject;
     private GameObject hitObject;
+    private Vector3 endPointRotation;
     private bool Clickable;
     private bool Teleportable;
     private Vector3 endPoint;
@@ -75,6 +76,7 @@ public class XRF_RaycastInteractions_VRController : MonoBehaviour
                 //i shot out a ray and it hit something
                 //Debug.Log("I hit something");
                 hitObject = myRayHit.transform.gameObject;
+                endPointRotation = myRayHit.normal;
 
                 if (!hitObject.GetComponent<Collider>().isTrigger && hitObject.GetComponent<XRF_InteractionController>())
                 {
@@ -89,6 +91,7 @@ public class XRF_RaycastInteractions_VRController : MonoBehaviour
                         RayMissed();
                         Teleportable = true;
                         feetIcon.transform.position = endPoint;
+                        feetIcon.transform.rotation = Quaternion.FromToRotation(Vector3.up, endPointRotation);
                         feetIcon.SetActive(true);
                         grabable = false;
                     }
@@ -286,7 +289,18 @@ public class XRF_RaycastInteractions_VRController : MonoBehaviour
         }
         else if (Teleportable)
         {
-            cameraRig.transform.position = new Vector3(endPoint.x + (cameraRig.transform.position.x - cameraEye.transform.position.x), endPoint.y, endPoint.z + (cameraRig.transform.position.z - cameraEye.transform.position.z));
+            if (cameraRig.transform.up == endPointRotation && cameraRig.transform.up == Vector3.up)
+            {
+                //
+                cameraRig.transform.position = new Vector3(endPoint.x + (cameraRig.transform.position.x - cameraEye.transform.position.x), endPoint.y, endPoint.z + (cameraRig.transform.position.z - cameraEye.transform.position.z));
+            }
+            else
+            {
+                //here we're going to add an optional rotation thing... 
+                cameraRig.transform.rotation = Quaternion.FromToRotation(cameraRig.transform.up, Vector3.up);
+                cameraRig.transform.position = endPoint;
+                cameraRig.transform.rotation = Quaternion.FromToRotation(cameraRig.transform.up, endPointRotation);
+            }
         }
     }
 
@@ -312,7 +326,7 @@ public class XRF_RaycastInteractions_VRController : MonoBehaviour
         //Right
         Vector3 eyelocation = cameraEye.transform.position;
         Vector3 eyeFloor = new Vector3(eyelocation.x, cameraRig.transform.position.y, eyelocation.z);
-        cameraRig.transform.RotateAround(eyeFloor, Vector3.up, 45.0f);
+        cameraRig.transform.RotateAround(eyeFloor, cameraRig.transform.up, 45.0f);
     }
 
     void JoyLeftClick()
@@ -320,6 +334,6 @@ public class XRF_RaycastInteractions_VRController : MonoBehaviour
         //Left
         Vector3 eyelocation = cameraEye.transform.position;
         Vector3 eyeFloor = new Vector3(eyelocation.x, cameraRig.transform.position.y, eyelocation.z);
-        cameraRig.transform.RotateAround(eyeFloor, Vector3.up, -45.0f);
+        cameraRig.transform.RotateAround(eyeFloor, cameraRig.transform.up, -45.0f);
     }
 }
