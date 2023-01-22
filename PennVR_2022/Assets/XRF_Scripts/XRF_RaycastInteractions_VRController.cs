@@ -92,7 +92,8 @@ public class XRF_RaycastInteractions_VRController : MonoBehaviour
                         RayMissed();
                         Teleportable = true;
                         feetIcon.transform.position = endPoint;
-                        feetIcon.transform.rotation = Quaternion.FromToRotation(Vector3.up, endPointRotation);
+                        //feetIcon.transform.rotation = Quaternion.FromToRotation(Vector3.up, endPointRotation);
+                        feetIcon.transform.eulerAngles = new Vector3(feetIcon.transform.eulerAngles.x, controllerGameObject.transform.eulerAngles.y, feetIcon.transform.eulerAngles.z);
                         feetIcon.SetActive(true);
                         grabable = false;
                     }
@@ -350,6 +351,10 @@ public class XRF_RaycastInteractions_VRController : MonoBehaviour
         }
         else if (Teleportable)
         {
+            cameraRig.transform.position = new Vector3(endPoint.x + (cameraRig.transform.position.x - cameraEye.transform.position.x), endPoint.y, endPoint.z + (cameraRig.transform.position.z - cameraEye.transform.position.z));
+
+            //this was testing teleporting and rotating around
+            /*
             if (cameraRig.transform.up == endPointRotation && cameraRig.transform.up == Vector3.up)
             {
                 //
@@ -362,6 +367,7 @@ public class XRF_RaycastInteractions_VRController : MonoBehaviour
                 cameraRig.transform.position = endPoint;
                 cameraRig.transform.rotation = Quaternion.FromToRotation(cameraRig.transform.up, endPointRotation);
             }
+            */
         }
     }
 

@@ -315,9 +315,10 @@ MonoBehaviour:
   NumberOfThingsToTurnOFF: 1
   StartOFFClickON: []
   StartONClickOFF: []
-  objectToBecomeParent: {fileID: 0}
   originalPos: {x: 0, y: 0, z: 0}
   isGrabbable: 0
+  theAudioSource: {fileID: 0}
+  theAudioClip: {fileID: 0}
 --- !u!65 &481491003
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -666,9 +667,10 @@ MonoBehaviour:
   - {fileID: 0}
   StartONClickOFF:
   - {fileID: 0}
-  objectToBecomeParent: {fileID: 0}
   originalPos: {x: 0, y: 0, z: 0}
   isGrabbable: 0
+  theAudioSource: {fileID: 0}
+  theAudioClip: {fileID: 0}
 --- !u!64 &805891664
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -876,9 +878,10 @@ MonoBehaviour:
   NumberOfThingsToTurnOFF: 1
   StartOFFClickON: []
   StartONClickOFF: []
-  objectToBecomeParent: {fileID: 0}
   originalPos: {x: 0, y: 0, z: 0}
   isGrabbable: 0
+  theAudioSource: {fileID: 0}
+  theAudioClip: {fileID: 0}
 --- !u!65 &996608014
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1438,9 +1441,10 @@ MonoBehaviour:
   - {fileID: 1191616238}
   StartONClickOFF:
   - {fileID: 640024165}
-  objectToBecomeParent: {fileID: 0}
   originalPos: {x: 0, y: 0, z: 0}
   isGrabbable: 0
+  theAudioSource: {fileID: 0}
+  theAudioClip: {fileID: 0}
 --- !u!65 &1283378449
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1661,9 +1665,10 @@ MonoBehaviour:
   - {fileID: 0}
   StartONClickOFF:
   - {fileID: 0}
-  objectToBecomeParent: {fileID: 0}
   originalPos: {x: 0, y: 0, z: 0}
   isGrabbable: 0
+  theAudioSource: {fileID: 0}
+  theAudioClip: {fileID: 0}
 --- !u!64 &1339730902
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1787,9 +1792,10 @@ MonoBehaviour:
   - {fileID: 0}
   StartONClickOFF:
   - {fileID: 0}
-  objectToBecomeParent: {fileID: 0}
   originalPos: {x: 0, y: 0, z: 0}
   isGrabbable: 0
+  theAudioSource: {fileID: 0}
+  theAudioClip: {fileID: 0}
 --- !u!65 &1340757696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2370,9 +2376,10 @@ MonoBehaviour:
   NumberOfThingsToTurnOFF: 1
   StartOFFClickON: []
   StartONClickOFF: []
-  objectToBecomeParent: {fileID: 0}
   originalPos: {x: 0, y: 0, z: 0}
   isGrabbable: 0
+  theAudioSource: {fileID: 0}
+  theAudioClip: {fileID: 0}
 --- !u!65 &1857158780
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2646,6 +2653,10 @@ PrefabInstance:
     - target: {fileID: 3243275026109358310, guid: dbbb8fb068f5f1643bc3b5c102a8d8df, type: 3}
       propertyPath: ShapeModule.m_Scale.y
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243275026109358310, guid: dbbb8fb068f5f1643bc3b5c102a8d8df, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 3243275026109358310, guid: dbbb8fb068f5f1643bc3b5c102a8d8df, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
